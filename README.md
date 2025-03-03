@@ -20,3 +20,6 @@ User this credentials to acces to admin module
 user:admin.UltraGroup,
 pass:Admin123
 }`
+ Data Mock Precargada se encuentra en el directorio src/data para tenerlo en cuenta 
+ 
+
