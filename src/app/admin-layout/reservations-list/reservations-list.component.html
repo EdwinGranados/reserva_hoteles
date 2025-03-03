@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h3>Reservas en mis hoteles</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Huésped</th>
+        <th>Hotel</th>
+        <th>Habitación</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (reservation of reservations; track $index) {
+      <tr>
+        <td>{{ reservation.id }}</td>
+        <td>{{ reservation.guestName }}</td>
+        <td>{{ reservation.hotel?.name }}</td>
+        <td>{{ reservation.room?.type }}</td>
+        <td>{{ reservation.checkIn | date:'shortDate' }}</td>
+        <td>{{ reservation.checkOut | date:'shortDate' }}</td>
+        <td>
+          <button class="btn btn-info btn-sm" (click)="viewDetails(reservation)">Ver Detalles</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  @if(selectedReservation){
+  <app-reservation-detail [reservation]="selectedReservation"
+    (closeDetail)="selectedReservation = null"></app-reservation-detail>
+  }
+
+</div>

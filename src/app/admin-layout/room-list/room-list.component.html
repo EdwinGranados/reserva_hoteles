@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <h3>Habitaciones de {{ hotel.name }}</h3>
+  <button class="btn btn-success mb-3" (click)="openRoomForm()">Agregar Habitación</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+        <th>Impuestos</th>
+        <th>Ubicación</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (room of rooms; track room.id) {
+      <tr>
+        <td>{{ room.id }}</td>
+        <td>{{ room.type }}</td>
+        <td>{{ room.price | currency:'USD' }}</td>
+        <td>{{ room.taxes }}%</td>
+        <td>{{ room.location }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm me-2" (click)="editRoom(room)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="toggleRoom(room.id)">
+            {{ room.enabled ? 'Deshabilitar' : 'Habilitar' }}
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  @if(showForm){
+    <app-room-form [room]="selectedRoom" (saveRoom)="onSaveRoom($event)"
+      (closeForm)="showForm = false"></app-room-form>
+  }
+</div>

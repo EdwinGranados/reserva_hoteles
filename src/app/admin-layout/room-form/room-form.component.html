@@ -1,0 +1,35 @@
+<div class="modal d-block" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ room ? 'Editar Habitación' : 'Agregar Habitación' }}</h5>
+        <button type="button" class="btn-close" (click)="close()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="roomForm" (ngSubmit)="save()">
+          <div class="mb-3">
+            <label class="form-label">Tipo</label>
+            <input formControlName="type" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <input type="number" formControlName="price" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Impuestos (%)</label>
+            <input type="number" formControlName="taxes" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ubicación</label>
+            <input formControlName="location" class="form-control" />
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" formControlName="enabled" />
+            <label class="form-check-label">Habilitada</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

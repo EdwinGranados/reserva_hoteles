@@ -1,0 +1,18 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Gestión de Habitaciones</h2>
+
+  <!-- Selector de hotel -->
+  <div class="mb-3">
+    <label class="form-label">Selecciona un hotel</label>
+    <select class="form-select" [(ngModel)]="selectedHotel" (change)="loadRooms(selectedHotel!)">
+      @for (hotel of hotels; track hotel.id) {
+      <option [ngValue]="hotel">{{ hotel.name }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Lista de habitaciones (solo si hay un hotel seleccionado) -->
+  @if (selectedHotel){
+    <app-room-list [hotel]="selectedHotel"></app-room-list>
+  }
+</div>

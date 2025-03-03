@@ -1,4 +1,5 @@
 import { Hotel } from '../app/interfaces/hotel';
+import { Reservation } from '../app/interfaces/reservation';
 import { Usuarios, Role } from '../app/interfaces/usuarios';
 
 export const usuarios: Usuarios[] = [
@@ -54,5 +55,24 @@ export const hoteles: Hotel[] = [
         enabled: true,
       },
     ],
+  },
+];
+
+export const Reservations: Reservation[] = [
+  {
+    id: 1,
+    hotelId: 1,
+    roomId: 1,
+    guestName: 'Juan Pérez',
+    checkIn: new Date('2024-07-01'),
+    checkOut: new Date('2024-07-05'),
+  },
+  {
+    id: 2,
+    hotelId: 2,
+    roomId: 3,
+    guestName: 'María Gómez',
+    checkIn: new Date('2024-07-10'),
+    checkOut: new Date('2024-07-15'),
   },
 ];
