@@ -1,0 +1,10 @@
+{
+  "routes": [
+    "/admin",
+    "/admin/hotels",
+    "/admin/reservations",
+    "/admin/rooms",
+    "/login",
+    "/user"
+  ]
+}
