@@ -1,0 +1,35 @@
+<div>
+  <nav class="navbar navbar-light bg-light d-flex justify-content-between p-3">
+    <span class="navbar-brand mb-0 h1">Prueba Técnica UltraGroup</span>
+    <button class="btn btn-primary" (click)="navigateToLogin()">
+      <i class="bi bi-person-circle me-2"></i> Admin Login
+    </button>
+  </nav>
+  <div class="d-flex">
+    <app-user-side-bar (filtersApplied)="applyFilters($event)"></app-user-side-bar>
+    <div class="flex-grow-1 p-3">
+      <div class="flex-grow-1 p-3">
+        <h3>Habitaciones Disponibles</h3>
+        <div class="row">
+          @for(room of filteredRooms; track $index){
+          <div class="col-md-4">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ room.type }}</h5>
+                <p class="card-text"><strong>Hotel:</strong> {{ room.hotelName }}</p>
+                <p class="card-text"><strong>Capacidad:</strong> {{ room.capacity }} personas</p>
+                <p class="card-text"><strong>Ubicación:</strong> {{ room.location }}</p>
+                <p class="card-text"><strong>Precio:</strong> {{ room.price | currency:'USD' }}</p>
+                <button class="btn btn-success mt-2" (click)="openReservationForm(room)">Reservar</button>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      @if(!!selectedRoom){
+        <app-reservation-form [room]="selectedRoom" [chekinDates]="filtersDates" (closeForm)="selectedRoom = null"></app-reservation-form>
+      }
+    </div>
+  </div>
+</div>

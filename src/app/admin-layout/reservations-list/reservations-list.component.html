@@ -16,7 +16,7 @@
       @for (reservation of reservations; track $index) {
       <tr>
         <td>{{ reservation.id }}</td>
-        <td>{{ reservation.guestName }}</td>
+        <td>{{ reservation.guest.name }}</td>
         <td>{{ reservation.hotel?.name }}</td>
         <td>{{ reservation.room?.type }}</td>
         <td>{{ reservation.checkIn | date:'shortDate' }}</td>

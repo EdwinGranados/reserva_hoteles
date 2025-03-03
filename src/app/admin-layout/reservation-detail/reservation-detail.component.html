@@ -7,7 +7,9 @@
       </div>
       <div class="modal-body">
         <p><strong>ID:</strong> {{ reservation.id }}</p>
-            <p><strong>Huésped:</strong> {{ reservation.guestName }}</p>
+            <p><strong>Huésped:</strong> {{ reservation.guest.name }}</p>
+            <p><strong>Telefono Contacto:</strong> {{ reservation.guest.phoneNumber }}</p>
+            <p><strong>Email:</strong> {{ reservation.guest.email }}</p>
             <p><strong>Hotel:</strong> {{ reservation.hotel?.name }}</p>
             <p><strong>Habitación:</strong> {{ reservation.room?.type }}</p>
             <p><strong>Precio:</strong> {{ reservation.room?.price | currency:'USD' }}</p>
@@ -15,6 +17,8 @@
             <p><strong>Check-in:</strong> {{ reservation.checkIn | date:'fullDate' }}</p>
             <p><strong>Check-out:</strong> {{ reservation.checkOut | date:'fullDate' }}</p>
             <p><strong>Total de la Reserva:</strong> {{ calculateTotal(reservation) | currency:'USD' }}</p>
+            <p><strong>Contacto de Emergencia:</strong> {{ reservation.emergencyContact.name }}</p>
+            <p><strong>Telefono Contacto Emergencia:</strong> {{ reservation.emergencyContact.phoneNumber }}</p>
       </div>
     </div>
   </div>

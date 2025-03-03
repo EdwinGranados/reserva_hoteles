@@ -1,0 +1,27 @@
+<div class="d-flex flex-column p-3 bg-light text-dark vh-100" style="width: 250px;">
+  <h4 class="text-center">Filtros</h4>
+  <div class="mb-3">
+    <label class="form-label">Fecha de Check-in</label>
+    <input type="date" class="form-control" [(ngModel)]="checkIn" (change)="validateDates()" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Fecha de Check-out</label>
+    <input type="date" class="form-control" [(ngModel)]="checkOut" (change)="validateDates()" />
+    @if(dateError){
+    <small class="text-danger">La fecha de entrada no puede ser mayor a la de salida.</small>
+    }
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Número de Huéspedes</label>
+    <input type="number" class="form-control" min="1" [(ngModel)]="guests" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Ciudad destino</label>
+    <select class="form-select" [(ngModel)]="selectedCity">
+      @for (city of cities; track $index) {
+      <option [value]="city">{{ city }}</option>
+      }
+    </select>
+  </div>
+  <button class="btn btn-primary" [disabled]="dateError" (click)="applyFilters()">Aplicar Filtros</button>
+</div>

@@ -8,7 +8,7 @@ import { Reservations } from '../../data/DataMock';
   providedIn: 'root'
 })
 export class ReservationService {
-  private mockReservations: Reservation[] =  Reservations
+  private mockReservations: Reservation[] = JSON.parse(localStorage.getItem('reservations')||'[]')
 
   constructor(private hotelService: HotelService) {}
 
@@ -30,13 +30,18 @@ export class ReservationService {
     return of(null);
   }
 
-  addReservation(reservation: Reservation): void {
+  addReservation(reservation: Reservation): Observable<Number> {
     reservation.id = this.mockReservations.length + 1;
     this.mockReservations.push(reservation);
+    localStorage.setItem('reservations', JSON.stringify(this.mockReservations))
+    this.mockReservations = JSON.parse(localStorage.getItem('reservations')||'[]')
+    return of(reservation.id)
   }
 
   cancelReservation(id: number): void {
     this.mockReservations = this.mockReservations.filter(r => r.id !== id);
+    localStorage.setItem('reservations', JSON.stringify(this.mockReservations))
+    this.mockReservations = JSON.parse(localStorage.getItem('reservations')||'[]')
   }
 }
 

@@ -1,0 +1,78 @@
+<div class="modal d-block" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reservar Habitación</h5>
+        <button type="button" class="btn-close" (click)="close()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="reservationForm" (ngSubmit)="save()">
+          <h5>Datos del Huésped</h5>
+          <div class="mb-3">
+            <label class="form-label">Nombres y Apellidos</label>
+            <input formControlName="guestName" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Fecha de Nacimiento</label>
+            <input type="date" formControlName="guestDob" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Género</label>
+            <select formControlName="guestGender" class="form-select" required>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tipo de Documento</label>
+            <select formControlName="guestDocumentType" class="form-select" required>
+              <option value="DNI">DNI</option>
+              <option value="Pasaporte">Pasaporte</option>
+              <option value="Cédula">Cédula</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Número de Documento</label>
+            <input formControlName="guestDocumentNumber" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" formControlName="guestEmail" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Teléfono de Contacto</label>
+            <input type="tel" formControlName="guestPhone" class="form-control" required />
+          </div>
+
+          <h5>Contacto de Emergencia</h5>
+          <div class="mb-3">
+            <label class="form-label">Nombres Completos</label>
+            <input formControlName="emergencyName" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Teléfono de Contacto</label>
+            <input type="tel" formControlName="emergencyPhone" class="form-control" required />
+          </div>
+
+          <h5>Detalles de la Reserva</h5>
+          <div class="mb-3">
+            <label class="form-label">Fecha de Check-in</label>
+            <input type="date" formControlName="checkIn" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Fecha de Check-out</label>
+            <input type="date" formControlName="checkOut" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <p><strong>Hotel:</strong> {{ room.hotelName }}</p>
+            <p><strong>Habitación:</strong> {{ room.type }}</p>
+            <p><strong>Ubicación:</strong> {{ room.location }}</p>
+            <p><strong>Precio por noche:</strong> {{ room.price | currency:'USD' }}</p>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!reservationForm.valid">Confirmar Reserva</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

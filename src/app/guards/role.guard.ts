@@ -9,7 +9,7 @@ export const roleGuard: CanActivateFn = (route, state) => {
   if (role === '1') {
     return true;
   } else {
-    //router.navigate(['/user']);
+    router.navigate(['/user']);
     return false;
   }
 };

@@ -20,6 +20,7 @@ export class RoomFormComponent {
     this.roomForm = this.fb.group({
       id: [null],
       type: ['', Validators.required],
+      capacity:['', Validators.required],
       price: [0, [Validators.required, Validators.min(1)]],
       taxes: [0, [Validators.required, Validators.min(0)]],
       location: ['', Validators.required],
