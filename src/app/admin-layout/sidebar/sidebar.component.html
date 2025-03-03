@@ -1,18 +1,18 @@
-<div class="d-flex flex-column p-3 bg-dark text-white vh-100" style="width: 250px;">
+<div class="d-flex flex-column p-3 bg-light text-dark vh-100" style="width: 250px;">
   <h4 class="text-center">Admin Panel</h4>
   <ul class="nav nav-pills flex-column mt-3">
     <li class="nav-item">
-      <a class="nav-link text-white d-flex align-items-center" routerLink="/admin/hotels">
+      <a class="nav-link text-dark d-flex align-items-center" [routerLink]="['/admin/hotels']">
         <i class="bi bi-building me-2"></i> Gestión de Hoteles
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white d-flex align-items-center" routerLink="/admin/rooms">
+      <a class="nav-link text-dark d-flex align-items-center" [routerLink]="['/admin/rooms']">
         <i class="bi bi-door-open me-2"></i> Gestión de Habitaciones
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white d-flex align-items-center" routerLink="/admin/reservations">
+      <a class="nav-link text-dark d-flex align-items-center" [routerLink]="['/admin/reservations']">
         <i class="bi bi-journal-check me-2"></i> Gestión de Reservas
       </a>
     </li>

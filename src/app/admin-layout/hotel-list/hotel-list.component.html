@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Gestión de Hoteles</h2>
+  <button class="btn btn-success mb-3" (click)="openHotelForm()">Agregar Hotel</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Ubicación</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (hotel of hotels; track hotel.id) {
+      <tr>
+        <td> {{hotel.id}} </td>
+        <td>{{ hotel.name }}</td>
+        <td>{{ hotel.location }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm me-2" (click)="editHotel(hotel)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="toggleHotel(hotel.id)">
+            {{ hotel.enabled ? 'Deshabilitar' : 'Habilitar' }}
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+@if (showForm) {
+<app-hotel-form [hotel]="selectedHotel" (saveHotel)="onSaveHotel($event)"
+  (closeForm)="showForm = false"></app-hotel-form>
+}

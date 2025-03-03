@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, ErrorObserver } from 'rxjs';
-import { usuarios } from '../../data/MockDataUsuarios';
-import { Role } from '../interfaces/usuarios';
+import { Observable } from 'rxjs';
+import { usuarios } from '../../data/DataMock';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -15,13 +14,13 @@ export class AuthService {
       if (!!userMatch) {
         return observer.next({
           token: `${userMatch.userName}_${userMatch.role}`,
-          role:userMatch.role
+          role: userMatch.role,
         });
       } else {
         return observer.error({ error: 'Invalid credentials' });
       }
     });
 
-    return resp
+    return resp;
   }
 }
